@@ -4,6 +4,7 @@ const Ajv = require('ajv')
 
 function _createPlugin (chai, util, options) {
   const assert = chai.assert
+  const expect = chai.expect
 
   let ajv = new Ajv(options)
 
@@ -26,18 +27,23 @@ function _createPlugin (chai, util, options) {
     } else {
       detail = ajv.errorsText(valid.error)
     }
+    /*
     if(!valid){
-    this.assert(
-      valid,
+    assert(
+      value,
       `expected value not match the json-schema\n${detail}`
     ) 
-    }
-    if(valid){
-      this.assert(
-      value,
-      `Valid json schema - ${schema.title | ''}`
+    }*/
+
+    this.assert(
+      valid,
+      `#{act} is of valid json schema - #{exp}`,
+      `#{act} is of invalid json schema- #{exp}`,
+      schema,
+      value
+
     ) 
-    }
+
   })
 
   /**

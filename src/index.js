@@ -34,8 +34,8 @@ function _createPlugin (chai, util, options) {
     }
     if(valid){
       this.assert(
-      valid,
-      `Valid json schema\n${detail}`
+      value,
+      `Valid json schema - ${schema.title | ''}`
     ) 
     }
   })

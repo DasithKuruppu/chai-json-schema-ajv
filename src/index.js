@@ -26,11 +26,18 @@ function _createPlugin (chai, util, options) {
     } else {
       detail = ajv.errorsText(valid.error)
     }
-    /*
+    if(!valid){
     this.assert(
       valid,
       `expected value not match the json-schema\n${detail}`
-    ) */
+    ) 
+    }
+    if(valid){
+      this.assert(
+      valid,
+      `Valid json schema\n${detail}`
+    ) 
+    }
   })
 
   /**

@@ -16,7 +16,7 @@ function _createPlugin (chai, util, options) {
   chai.Assertion.addMethod('jsonSchema', function (schema) {
     const value = this._obj
 
-    assert.ok(schema, 'missing schema')
+    // assert.ok(schema, 'missing schema')
 
     const valid = ajv.validate(schema, value)
 
@@ -26,11 +26,11 @@ function _createPlugin (chai, util, options) {
     } else {
       detail = ajv.errorsText(valid.error)
     }
-
+    /*
     this.assert(
       valid,
       `expected value not match the json-schema\n${detail}`
-    )
+    ) */
   })
 
   /**
